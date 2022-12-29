@@ -13,4 +13,7 @@ fun main() {
     val day3 = getResourceAsText("day3")!!
     println(charInBothRucksackCompartmentsSum(day3))
     println(groupBadgePrioritiesSum(day3))
+
+    val day4 = getResourceAsText("day4")!!
+    println(fullyContainedRanges(day4))
 }
