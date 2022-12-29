@@ -17,4 +17,9 @@ class Day3Test {
         assertEquals(157, charInBothRucksackCompartmentsSum(input))
     }
 
+    @Test
+    fun testSumOfGroupBadgePriorities() {
+        assertEquals(70, groupBadgePrioritiesSum(input))
+    }
+
 }
