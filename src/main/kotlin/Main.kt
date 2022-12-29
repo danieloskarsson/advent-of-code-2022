@@ -1,7 +1,8 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+fun getResourceAsText(path: String): String? =
+    object {}.javaClass.getResource(path)?.readText()
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+fun main() {
+    val day1 = getResourceAsText("day1")!!
+    println(maxCalories(day1)) // first half
+    println(max3Calories(day1)) // second half
 }
