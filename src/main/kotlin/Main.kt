@@ -9,4 +9,7 @@ fun main() {
     val day2 = getResourceAsText("day2")!!
     println(rockPaperScissorsTotalScore(day2))
     println(rockPaperScissorsStrategyScore(day2))
+
+    val day3 = getResourceAsText("day3")!!
+    println(charInBothRucksackCompartmentsSum(day3))
 }
