@@ -17,4 +17,9 @@ class Day4Test {
         assertEquals(2, fullyContainedRanges(input))
     }
 
+    @Test
+    fun testOverlappingPairs() {
+        assertEquals(4, overlappingPairs(input))
+    }
+
 }

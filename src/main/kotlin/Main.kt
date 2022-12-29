@@ -16,4 +16,5 @@ fun main() {
 
     val day4 = getResourceAsText("day4")!!
     println(fullyContainedRanges(day4))
+    println(overlappingPairs(day4))
 }
