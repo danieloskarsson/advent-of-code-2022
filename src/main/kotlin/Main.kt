@@ -8,4 +8,5 @@ fun main() {
 
     val day2 = getResourceAsText("day2")!!
     println(rockPaperScissorsTotalScore(day2))
+    println(rockPaperScissorsStrategyScore(day2))
 }

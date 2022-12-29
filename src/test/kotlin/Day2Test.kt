@@ -14,4 +14,9 @@ class Day2Test {
         assertEquals(15, rockPaperScissorsTotalScore(input))
     }
 
+    @Test
+    fun testRockPaperScissorsStrategyScore() {
+        assertEquals(12, rockPaperScissorsStrategyScore(input))
+    }
+
 }

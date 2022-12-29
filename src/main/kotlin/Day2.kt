@@ -5,13 +5,11 @@ private fun mapFrom(input: String) = input
         Pair(split[0].first(), split[1].first())
     }
 
-private fun objectFrom(letter: Char): RockPaperScissors {
-    return when (letter) {
-        'A', 'X' -> RockPaperScissors.Rock
-        'B', 'Y' -> RockPaperScissors.Paper
-        'C', 'Z' -> RockPaperScissors.Scissors
-        else -> throw IllegalArgumentException()
-    }
+private fun objectFrom(letter: Char) = when (letter) {
+    'A', 'X' -> RockPaperScissors.Rock
+    'B', 'Y' -> RockPaperScissors.Paper
+    'C', 'Z' -> RockPaperScissors.Scissors
+    else -> throw IllegalArgumentException()
 }
 
 private sealed class RockPaperScissors(val points: Int) {
@@ -33,6 +31,27 @@ private sealed class RockPaperScissors(val points: Int) {
 
         return 0
     }
+
+    /**
+     * Return the corresponding object for when letter is:
+     *  X -> this wins, return corresponding loosing object
+     *  Z -> this loose, return corresponding winning object
+     *  Y -> draw, return same object
+     */
+    fun versusObject(letter: Char) = when (letter) {
+        'X' -> when (this) {
+            Rock -> Scissors
+            Paper -> Rock
+            Scissors -> Paper
+        }
+        'Z' -> when (this) {
+            Rock -> Paper
+            Paper -> Scissors
+            Scissors -> Rock
+        }
+        'Y' -> this
+        else -> throw IllegalArgumentException()
+    }
 }
 
 fun rockPaperScissorsTotalScore(input: String): Int {
@@ -40,6 +59,17 @@ fun rockPaperScissorsTotalScore(input: String): Int {
     mapFrom(input).forEach {
         val other = objectFrom(it.first)
         val you = objectFrom(it.second)
+        sum += you.points
+        sum += you.versusPoints(other)
+    }
+    return sum
+}
+
+fun rockPaperScissorsStrategyScore(input: String): Int {
+    var sum = 0
+    mapFrom(input).forEach {
+        val other = objectFrom(it.first)
+        val you = other.versusObject(it.second)
         sum += you.points
         sum += you.versusPoints(other)
     }
