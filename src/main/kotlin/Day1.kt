@@ -1,19 +1,13 @@
 fun maxCalories(input: String) = input
     .split("\n\n")
-    .maxOf { set ->
-        set
-            .split("\n")
-            .sumOf { it.toInt() }
-    }
+    .maxOf { set -> set.lines().sumOf { it -> it.toInt() } }
 
 fun max3Calories(input: String): Int {
     var max1 = 0
     var max2 = 0
     var max3 = 0
     input.split("\n\n").forEach { set ->
-        val sum = set
-            .split("\n")
-            .sumOf { it.toInt() }
+        val sum = set.lines().sumOf { it.toInt() }
         if (sum > max1) {
             max3 = max2
             max2 = max1

@@ -1,10 +1,18 @@
-infix fun IntRange.subset(other: IntRange) = all { it in other }
+private fun String.toPair(delimiter: String) = split(delimiter).let {
+    it.first() to it.last()
+}
 
-infix fun IntRange.overlapping(other: IntRange) = any { it in other }
+private fun String.toRange(delimiter: String) = toPair(delimiter).let {
+    it.first.toInt()..it.second.toInt()
+}
 
-private fun listFrom(input: String) = input.toLines()
-    .map { line -> line.toPair(",") }
-    .map { pair -> pair.first.toRange("-") to pair.second.toRange("-") }
+private infix fun IntRange.subset(other: IntRange) = all { it in other }
+
+private infix fun IntRange.overlapping(other: IntRange) = any { it in other }
+
+private fun listFrom(input: String) = input.lines()
+    .map { it.toPair(",") }
+    .map { it.first.toRange("-") to it.second.toRange("-") }
 
 fun fullyContainedRanges(input: String) = listFrom(input).count {
     it.first subset it.second || it.second subset it.first
